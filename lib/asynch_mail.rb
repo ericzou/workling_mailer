@@ -4,7 +4,7 @@ module AsynchMail
   def self.included(base)
     base.class_eval do
       class << self
-        alias_method :orig_method_missing, :method_missing
+        alias_method :orig_method_missing, :method_missing unless method_defined? :orig_method_missing
 
         def method_missing(method_symbol, *parameters)#:nodoc:
           case method_symbol.id2name
